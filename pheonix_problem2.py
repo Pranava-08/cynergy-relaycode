@@ -13,11 +13,13 @@ def r_to_d(rn:str)->int:
     return sum
 
 def d_to_r(n:int)->str:
+    if n>1000 or n<1:
+        raise "give number between 1-1000"
     l=[]
     c=0
-    while i!=0:
-        l.append(i%10*(10**c))
-        i=i//10
+    while n!=0:
+        l.append(n%10*(10**c))
+        n=n//10
         c+=1
     r=''
     for i in l[::-1]:
@@ -43,14 +45,47 @@ def d_to_r(n:int)->str:
         elif len(str(i))==2:
             if i == 10:
                 r+='x'
-
-
+            elif i==20:
+                r+='xx'
+            elif i==30:
+                r+='xxx'
+            elif i==40:
+                r+='xl'
+            elif i==50:
+                r+='l'
+            elif i==60:
+                r+='lx'
+            elif i==70:
+                r+="lxx"
+            elif i==80:
+                r+='lxxx'
+            elif i==90:
+                r+='xc'
         elif len(str(i))==3:
             if i ==100:
-                r+='c'        
+                r+='c'
+            elif i==200:
+                r+='cc'
+            elif i==300:
+                r+='ccc'
+            elif i==400:
+                r+='cd'
+            elif i==500:
+                r+='d'
+            elif i==600:
+                r+='dc'
+            elif i==700:
+                r+="dcc"
+            elif i==800:
+                r+='dccc'
+            elif i==900:
+                r+='cm'        
 
         elif len(str(i))==4:
             if i == 1000:
                 r+='m'
+        
     return r
-
+l=[4,20,34,50,500,1000]
+for i in l:
+    print(d_to_r(i))
